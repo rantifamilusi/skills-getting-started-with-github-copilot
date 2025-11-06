@@ -24,6 +24,6 @@ def test_signup_duplicate():
     client.post(f"/activities/{activity_name}/signup?email={email}")
     # Second signup should fail or return a message about duplicate
     response = client.post(f"/activities/{activity_name}/signup?email={email}")
-    assert response.status_code in (400, 200)
+    assert response.status_code == 400
     # Accept either error or info message
     assert "message" in response.json() or "detail" in response.json()
